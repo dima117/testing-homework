@@ -61,11 +61,14 @@ function createRootReducer(state: Partial<ApplicationState>) {
             case 'ADD_TO_CART':
                 const { id, name, price } = action.product;
 
-                if (!draft.cart[id]) {
-                    draft.cart[id] = { name, count: 0, price };
+                if (process.env.BUG_ID !== '7') {
+                    if (!draft.cart[id]) {
+                        draft.cart[id] = { name, count: 0, price };
+                    }
+
+                    draft.cart[id].count++;
                 }
 
-                draft.cart[id].count++;
                 draft.latestOrderId = undefined;
                 break
             case 'CLEAR_CART':
@@ -105,13 +108,21 @@ const productDetailsLoadEpic: ExampleEpic = (action$, store$, { api }) => action
 
 const shoppingCartEpic: ExampleEpic = (action$, store$, { cart }) => action$.pipe(
     ofType('ADD_TO_CART', 'CLEAR_CART', 'CHECKOUT_COMPLETE'),
-    tap(() => cart.setState(store$.value.cart)),
+    tap(() => {
+        if (process.env.BUG_ID !== '6') {
+            cart.setState(store$.value.cart)
+        }
+    }),
     mergeMapTo(EMPTY),
 );
 
 const checkoutEpic: ExampleEpic = (action$, store$, { api }) => action$.pipe(
     ofType('CHECKOUT'),
     mergeMap(({ form, cart }: ReturnType<typeof checkout>) => {
+        if (process.env.BUG_ID === '5') {
+            return EMPTY;
+        }
+
         return from(api.checkout(form, cart)).pipe(
             map(res => checkoutComplete(res.data.id)),
         );
