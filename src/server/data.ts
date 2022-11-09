@@ -28,8 +28,14 @@ export class ExampleStore {
     private readonly products: Product[] = generateProducts();
     private readonly orders: (Order | { id: number })[] = [];
 
-    getAllProducts(): ProductShortInfo[] {
-        return this.products.map(getShortInfo);
+    getAllProducts(bugId: number): ProductShortInfo[] {
+        const products = this.products.map(getShortInfo);
+
+        if (bugId === 1) {
+            products.forEach(p => { p.name = undefined });
+        }
+
+        return products;
     }
 
     getProductById(id: number): Product | undefined {

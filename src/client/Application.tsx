@@ -20,7 +20,13 @@ export const Application: FC = () => {
     const cart = useSelector((s: ApplicationState) => s.cart);
 
     const toggle = useCallback(() => setCollapsed(!collapsed), [setCollapsed, collapsed]);
-    const hide = useCallback(() => setCollapsed(true), [setCollapsed]);
+    const hide = useCallback(() => {
+        if (process.env.BUG_ID === '4') {
+            setCollapsed(false);
+        } else {
+            setCollapsed(true);
+        }
+    }, [setCollapsed]);
 
     const count = Object.keys(cart).length;
     const cartLabel = count ? `Cart (${count})` : 'Cart';
