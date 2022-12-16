@@ -3,3 +3,5 @@ dist
 NOTES.md
 Dockerfile
 .dockerignore
+.DS_Store
+html-report

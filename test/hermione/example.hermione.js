@@ -1,13 +1,11 @@
 const { assert } = require('chai');
 
-describe('github', async function() {
+describe('microsoft', async function() {
     it('Тест, который пройдет', async function() {
-        await this.browser.url('https://github.com/gemini-testing/hermione');
-        await this.browser.assertView('plain', '#readme', {
-            compositeImage: true,
-        });
+        await this.browser.url('https://www.microsoft.com/ru-ru/');
+        await this.browser.assertView('plain', 'body');
 
-        const title = await this.browser.$('#readme h1').getText();
-        assert.equal(title, 'Hermione');
+        const title = await this.browser.$('#uhfLogo').getText();
+        assert.equal(title, 'Microsoft');
     });
 });
