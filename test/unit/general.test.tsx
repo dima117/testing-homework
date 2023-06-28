@@ -24,7 +24,7 @@ function renderContainer() {
   return render(application);
 }
 
-describe('Тесты для проверки общих требований', () => {
+describe('Юнит тесты для проверки общих требований', () => {
 
   it('хедер содержит ссылку на страницу каталога', async () => {
     const { getByRole } = renderContainer();
@@ -54,10 +54,10 @@ describe('Тесты для проверки общих требований', (
     expect(cartLink.getAttribute('href')).toBe('/cart');
   })
 
-  it('хедер содержит ссылку на страницу корзины', async () => {
+  it('название магазина в шапке должно быть ссылкой на главную страницу', async () => {
     const { getByRole } = renderContainer();
-    const cartLink = getByRole('link', { name: /Cart/ });
+    const cartLink = getByRole('link', { name: 'Example store' });
 
-    expect(cartLink.getAttribute('href')).toBe('/cart');
+    expect(cartLink.getAttribute('href')).toBe('/');
   })
 })
