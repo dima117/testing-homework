@@ -2,6 +2,7 @@ const { assert } = require('chai');
 
 describe('microsoft', async function() {
     it('Тест, который пройдет', async function() {
+        // await this.browser.setWindowSize(1920,  1080);
         await this.browser.url('https://www.microsoft.com/ru-ru/');
         await this.browser.assertView('plain', 'body');
 

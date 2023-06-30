@@ -54,7 +54,7 @@ export const Cart: React.FC = () => {
                         <th scope="col">Total</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody data-testid="table-body">
                     {rows}
                 </tbody>
                 <tfoot>
