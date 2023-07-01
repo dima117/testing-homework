@@ -1,7 +1,7 @@
 # Домашнее задание: Автотесты
 
-unit tests: BUG_ID = [7, 6]
-e2e tests: BUG_ID = [4 (general.hermione.js)]
+- **unit tests:** BUG_ID = [7, 6]
+- **e2e tests:** BUG_ID = [4 (general.hermione.js)]
 
 ## Как запустить
 
