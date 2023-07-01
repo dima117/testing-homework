@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { ExampleApi, CartApi } from '../../src/client/api';
 import { initStore } from '../../src/client/store';
 import { Application } from '../../src/client/Application';
@@ -15,11 +15,11 @@ function renderContainer() {
   const store = initStore(api, cart);
 
   const application = (
-    <MemoryRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <Application />
       </Provider>
-    </MemoryRouter>
+    </BrowserRouter>
   );
   return render(application);
 }
