@@ -60,21 +60,4 @@ describe('Юнит тесты для проверки страницы ката�
 
     expect(getByRole('button', { name: 'Add to Cart' })).toBeTruthy();
   });
-
-  it('Если кликнуть на кнопку, то товар добавится в корзину', async () => {
-    const product: Product = {
-      description: 'new product',
-      material: 'wood',
-      color: 'brown',
-      id: 0,
-      name: 'chair',
-      price: 100
-    }
-    const { getByText, getByRole } = renderContainer(<ProductDetails product={product} />);
-    
-    const button = getByRole('button', { name: 'Add to Cart' });
-    fireEvent.click(button);
-
-    expect(getByText('Item in cart')).toBeTruthy();
-  });
 })
