@@ -24,7 +24,7 @@ describe("Дополнительные костыльные проверки", a
     );
   });
 
-  // BUG_ID = 5
+  // BUG_ID = 5 6 7 8
   it("После отправки формы в корзине появляется надпись об успехе", async function ({
     browser,
   }) {
@@ -53,6 +53,10 @@ describe("Дополнительные костыльные проверки", a
     await formButton.waitForExist();
 
     await formButton.click();
+
+    const success = await browser.$(".alert-success");
+    const successDisplayed = await success.isDisplayed();
+    assert.isOk(successDisplayed, "Умпешной формы не появилось");
 
     await browser.assertView("cartform", ".Application", {
       compositeImage: true,
