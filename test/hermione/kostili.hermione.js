@@ -80,6 +80,8 @@ describe("Дополнительные костыльные проверки", a
         ".ProductDetails-Color",
         ".ProductDetails-Price",
         ".ProductDetails-Material",
+        ".navbar",
+        ".CartBadge",
       ],
       compositeImage: true,
     });
