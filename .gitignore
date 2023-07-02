@@ -5,3 +5,4 @@ Dockerfile
 .dockerignore
 .DS_Store
 html-report
+hermione-html-report
