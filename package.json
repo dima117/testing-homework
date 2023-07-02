@@ -2,7 +2,7 @@
   "name": "autotests-hw-with-auto-check",
   "version": "1.0.0",
   "scripts": {
-    "start": "cross-env BUG_ID=8 nodemon ./src/server/index.ts",
+    "start": "cross-env BUG_ID=1 nodemon ./src/server/index.ts",
     "test:unit": "jest",
     "test:unit:bug": "cross-env BUG_ID=5 jest",
     "test:e2e": ".\\node_modules\\.bin\\hermione",
