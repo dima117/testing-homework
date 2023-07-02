@@ -25,15 +25,13 @@ describe("Дополнительные костыльные проверки", a
   });
 
   // BUG_ID = 5 6 7 8 10
-  it("Добавилили товар в корзину, заполнили и отправили форму в корзине, появилась надпись об успехе", async function ({
+  it("Добавилили товар в корзину, заполнили и отправили форму в корзине, появилась надпись об успехе c корректным #", async function ({
     browser,
   }) {
     await browser.url("/hw/store/catalog/0");
     const button = await browser.$(".ProductDetails-AddToCart");
     await button.waitForExist();
     await button.click();
-
-    const catalogItemsMock = await browser.mock("**/hw/store/api/checkout");
 
     await browser.url("/hw/store/cart");
 
@@ -55,13 +53,16 @@ describe("Дополнительные костыльные проверки", a
     await formButton.click();
 
     const success = await browser.$(".alert-success");
-    const successDisplayed = await success.isDisplayed();
-    assert.isOk(successDisplayed, "Успешной формы не появилось");
+    assert.isOk(success, "Успешной формы не появилось");
 
     await browser.assertView("cartform", ".Application", {
       compositeImage: true,
       ignoreElements: [".Cart-SuccessMessage"],
     });
+
+    const cartNumber = await browser.$(".Cart-Number");
+    await cartNumber.waitForExist();
+    assert.equal(await cartNumber.getText(), "1", "Номер заказа не 1");
   });
 
   // BUG_ID = 9
