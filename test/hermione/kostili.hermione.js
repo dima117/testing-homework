@@ -63,4 +63,19 @@ describe("Дополнительные костыльные проверки", a
       ignoreElements: [".Cart-SuccessMessage"],
     });
   });
+
+  // BUG_ID = 9
+  it("Размер кнопки на странице товара", async function ({ browser }) {
+    await browser.url("http://localhost:3000/hw/store/catalog/0");
+    await browser.assertView("catalogpage", ".Application", {
+      ignoreElements: [
+        ".ProductDetails-Name",
+        ".ProductDetails-Description",
+        ".ProductDetails-Color",
+        ".ProductDetails-Price",
+        ".ProductDetails-Material",
+      ],
+      compositeImage: true,
+    });
+  });
 });
