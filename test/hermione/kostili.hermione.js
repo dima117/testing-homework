@@ -66,7 +66,11 @@ describe("Дополнительные костыльные проверки", a
 
   // BUG_ID = 9
   it("Размер кнопки на странице товара", async function ({ browser }) {
-    await browser.url("http://localhost:3000/hw/store/catalog/0");
+    const mockProduct = `{"id":0,"name":"Мой продукт","description":"The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive","price":914,"color":"maroon","material":"Fresh"}`;
+    const productMock = await browser.mock("**/hw/store/api/products/0");
+    await productMock.respond(mockProduct);
+
+    await browser.url("/hw/store/catalog/0");
     await browser.assertView("catalogpage", ".Application", {
       ignoreElements: [
         ".ProductDetails-Name",
