@@ -56,7 +56,7 @@ describe("Дополнительные костыльные проверки", a
 
     const success = await browser.$(".alert-success");
     const successDisplayed = await success.isDisplayed();
-    assert.isOk(successDisplayed, "Умпешной формы не появилось");
+    assert.isOk(successDisplayed, "Успешной формы не появилось");
 
     await browser.assertView("cartform", ".Application", {
       compositeImage: true,
@@ -65,7 +65,9 @@ describe("Дополнительные костыльные проверки", a
   });
 
   // BUG_ID = 9
-  it("Размер кнопки на странице товара", async function ({ browser }) {
+  it("Размер кнопки на странице товара не изменился", async function ({
+    browser,
+  }) {
     const mockProduct = `{"id":0,"name":"Мой продукт","description":"The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive","price":914,"color":"maroon","material":"Fresh"}`;
     const productMock = await browser.mock("**/hw/store/api/products/0");
     await productMock.respond(mockProduct);
