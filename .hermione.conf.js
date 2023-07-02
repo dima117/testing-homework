@@ -4,7 +4,7 @@ module.exports = {
       files: "test/hermione",
     },
   },
-
+  baseUrl: "http://localhost:3000/hw/store",
   browsers: {
     chrome: {
       automationProtocol: "devtools",
@@ -14,12 +14,12 @@ module.exports = {
       windowSize: {
         width: 1920,
         height: 1080,
-      }
+      },
     },
   },
   plugins: {
     "html-reporter/hermione": {
-      enabled: true,
+      path: "hermione-html-report",
     },
   },
 };
