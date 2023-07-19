@@ -41,17 +41,19 @@ function renderContainer() {
 
 describe('Юнит тесты для проверки страницы каталога и товара', () => {
   it('B каталоге должны отображаться товары, список которых приходит с сервера', async () => {
-    const { getByText, getByRole } = renderContainer();
+    const { getByTestId, container } = renderContainer();
 
     await waitFor(() => {
-      expect(getByRole('heading', { name: 'Product 1' })).toBeTruthy();
-      expect(getByText('$300')).toBeTruthy();
-      expect(getByRole('link', { name: 'Details' }).getAttribute('href')).toBe('/catalog/0');
+      expect(container.querySelector(".Catalog")).toBeTruthy();
     })
+
+    expect(getByTestId('card-title').textContent).toBe('Product 1');
+    expect(getByTestId('card-price').textContent).toBe('$300');
+    expect(getByTestId('card-link').getAttribute("href")).toBe('/catalog/0');
   })
 
   it('На странице с подробной информацией должна отображаться все необходимая информация', async () => {
-    const { getByText, getByRole } = renderContainer();
+    const { getByTestId, getByRole, container } = renderContainer();
 
     await waitFor(() => {
       expect(getByRole('link', { name: 'Details' }).getAttribute('href')).toBe('/catalog/0');
@@ -59,12 +61,14 @@ describe('Юнит тесты для проверки страницы ката�
     })
 
     await waitFor(() => {
-      expect(getByText('Product 1')).toBeTruthy();
-      expect(getByText('wood')).toBeTruthy();
-      expect(getByText('red')).toBeTruthy();
-      expect(getByText('$300')).toBeTruthy();
-      expect(getByRole('button', { name: 'Add to Cart' })).toBeTruthy();
+      expect(container.querySelector(".Product")).toBeTruthy();
     })
+
+    expect(getByTestId('product-name').textContent).toBe('Product 1');
+    expect(getByTestId('product-description').textContent).toBe('new product');
+    expect(getByTestId('product-material').textContent).toBe('wood');
+    expect(getByTestId('product-color').textContent).toBe('red');
+    expect(getByTestId('product-price').textContent).toBe('$300');
   });
 
   it('Нажатие кнопки "добавить в корзину" должно увеличивать количество товара в корзине', async () => {
@@ -72,15 +76,15 @@ describe('Юнит тесты для проверки страницы ката�
     
     await waitFor(() => {
       expect(getByRole('link', { name: 'Details' }).getAttribute('href')).toBe('/catalog/0');
-      fireEvent.click(getByRole('link', { name: 'Details' }));
     })
+    fireEvent.click(getByRole('link', { name: 'Details' }));
 
     await waitFor(() => {
       expect(getByRole('button', { name: 'Add to Cart' })).toBeTruthy();
       expect(container.querySelector('.CartBadge')).toBe(null);
-      fireEvent.click(getByRole('button', { name: 'Add to Cart' }));
-      fireEvent.click(getByRole('button', { name: 'Add to Cart' }));
     })
+    fireEvent.click(getByRole('button', { name: 'Add to Cart' }));
+    fireEvent.click(getByRole('button', { name: 'Add to Cart' }));
 
     expect(getByText('Item in cart')).toBeTruthy();
     fireEvent.click(getByRole('link', { name: /Cart/ }));
