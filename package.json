@@ -9,7 +9,7 @@
     "test": "npm run test:unit && npm run test:e2e",
     "build": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 -c .storybook-xxx",
     "build-storybook": "storybook build"
   },
   "dependencies": {
@@ -36,14 +36,9 @@
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.0",
     "@jest/globals": "^29.3.1",
-    "@storybook/addon-essentials": "^7.4.5",
-    "@storybook/addon-interactions": "^7.4.5",
-    "@storybook/addon-links": "^7.4.5",
-    "@storybook/addon-onboarding": "^1.0.8",
     "@storybook/blocks": "^7.4.5",
     "@storybook/react": "^7.4.5",
     "@storybook/react-webpack5": "^7.4.5",
-    "@storybook/testing-library": "^0.2.2",
     "@types/express": "^4.17.13",
     "@types/faker": "^5.5.9",
     "@types/jest": "^29.2.4",
