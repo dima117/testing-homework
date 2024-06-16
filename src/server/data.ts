@@ -1,5 +1,12 @@
-import { commerce } from 'faker';
+import { Faker, en } from '@faker-js/faker'
 import { Order, Product, ProductShortInfo } from '../common/types';
+
+export const faker = new Faker({
+    locale: [en],
+});
+
+const commerce = faker.commerce;
+const cats = faker.animal;
 
 const generateProducts = () => {
     const products: Product[] = []
@@ -7,10 +14,10 @@ const generateProducts = () => {
     for(let id = 0; id < 27; id++) {
         products.push({
             id,
-            name: `${commerce.productAdjective()} ${commerce.product()}`,
-            description: commerce.productDescription(),
+            name: `${commerce.productAdjective()} kogtetochka`,
+            description: `Really ${commerce.productAdjective()} kogtetochka for ${cats.cat()}`,
             price: Number(commerce.price()),
-            color: commerce.color(),
+            color: faker.color.human(),
             material: commerce.productMaterial(),
         });
     }
