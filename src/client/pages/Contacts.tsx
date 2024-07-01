@@ -1,31 +1,34 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { cn } from '@bem-react/classname';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { cn } from "@bem-react/classname";
 
-const bem = cn('Contacts');
+const bem = cn("Contacts");
 
 export const Contacts: React.FC = () => {
-    return (
-        <div className={bem()}>
-            <Helmet title="Contacts" />
-            <div className="row">
-                <div className="col">
-                    <h1>Contacts</h1>
+  return (
+    <div className={bem()}>
+      <Helmet title="Contacts" />
+      <div className="row">
+        <div className="col">
+          <h1>Contacts</h1>
 
-                    <p>
-                        Ut non consequatur aperiam ex dolores. Voluptatum harum consequatur est totam. Aut voluptatum aliquid aut optio et ea.
-                        Quaerat et eligendi minus quasi. Culpa voluptatem voluptatem dolores molestiae aut quos iure.
-                        Repellat aperiam ut aliquam iure. Veritatis magnam quisquam et dolorum recusandae aut.
-                    </p>
-                    <p>
-                        Molestias inventore illum architecto placeat molestias ipsam facilis ab quo.
-                        Rem dolore cum qui est reprehenderit assumenda voluptatem nisi ipsa. Unde libero quidem. Excepturi maiores vel quia.
-                        Neque facilis nobis minus veniam id. Eum cum eveniet accusantium molestias voluptas aut totam laborum aut.
-                        Ea molestiae ullam et. Quis ea ipsa culpa eligendi ab sit ea error suscipit. Quia ea ut minus distinctio quam eveniet nihil.
-                        Aut voluptate numquam ipsa dolorem et quas nemo.
-                    </p>
-                </div>
-            </div>
+          <p>
+            Have a question about our scratchers or need help placing an order?
+            Don't hesitate to reach out to us! Our dedicated team is here to
+            provide you with top-notch service and support.
+          </p>
+          <p>
+            Our friendly representatives are available during business hours to
+            assist you with any inquiries you may have.
+          </p>
+          <p>
+            At our store, customer satisfaction is our priority, and we're
+            committed to ensuring you have a smooth and enjoyable shopping
+            experience. Reach out to us today – we're here to help make your
+            cat's scratching dreams a reality!
+          </p>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};

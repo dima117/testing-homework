@@ -69,7 +69,7 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
                     id="f-phone"
                     type="text"
                     disabled={sent}
-                    className={bem("Field", { type: 'phone' }, [getControlClass(phoneIsValid, submitted)] )}
+                    className={bem("Field", { type: 'phone' }, [getControlClass(phoneIsValid, submitted)])}
                     onChange={onChangePhone} />
                 <div className="invalid-feedback">Please provide a valid phone</div>
             </div>
@@ -79,7 +79,7 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
                     id="f-address"
                     disabled={sent}
                     rows={3}
-                    className={bem("Field", { type: 'address' }, [getControlClass(addressIsValid, submitted)] )}
+                    className={bem("Field", { type: 'address' }, [getControlClass(addressIsValid, submitted)])}
                     onChange={onChangeAddress}></textarea>
                 <div className="invalid-feedback">Please provide a valid address</div>
             </div>

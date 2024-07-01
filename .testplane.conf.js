@@ -1,7 +1,7 @@
 module.exports = {
   sets: {
     desktop: {
-      files: "test/hermione",
+      files: "test/testplane",
     },
   },
 
@@ -13,8 +13,9 @@ module.exports = {
       },
     },
   },
+
   plugins: {
-    "html-reporter/hermione": {
+    "html-reporter/testplane": {
       enabled: true,
     },
   },
