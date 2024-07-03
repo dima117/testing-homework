@@ -1,21 +1,23 @@
 import axios from 'axios';
 import { CartState, CheckoutFormData, CheckoutResponse, Product, ProductShortInfo } from '../common/types';
 
+const currentBugId = Number(process.env.BUG_ID) || undefined;
+
 export class ExampleApi {
     constructor(private readonly basename: string) {
 
     }
 
     async getProducts() {
-        return await axios.get<ProductShortInfo[]>(`${this.basename}/api/products`);
+        return await axios.get<ProductShortInfo[]>(`${this.basename}/api/products`, { params: { bug_id: currentBugId } });
     }
 
     async getProductById(id: number) {
-        return await axios.get<Product>(`${this.basename}/api/products/${id}`);
+        return await axios.get<Product>(`${this.basename}/api/products/${id}`, { params: { bug_id: currentBugId } });
     }
 
     async checkout(form: CheckoutFormData, cart: CartState) {
-        return await axios.post<CheckoutResponse>(`${this.basename}/api/checkout`, { form, cart });
+        return await axios.post<CheckoutResponse>(`${this.basename}/api/checkout`, { form, cart }, { params: { bug_id: currentBugId } });
     }
 }
 
