@@ -7,7 +7,7 @@ const basename = '/hw/store';
 const app = express();
 
 app.use(express.json());
-app.use(basename, express.static('dist'));
+app.use(basename, express.static('dist', { index: false }));
 app.use(basename, router);
 
 app.listen(port, '::', () => {
