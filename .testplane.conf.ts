@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   sets: {
     desktop: {
       files: "test/testplane",
@@ -10,6 +10,7 @@ module.exports = {
       automationProtocol: "devtools",
       desiredCapabilities: {
         browserName: "chrome",
+        headless: false,
       },
     },
   },
