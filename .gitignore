@@ -1,7 +1,8 @@
-node_modules
-dist
+node_modules/
+dist/
 NOTES.md
 Dockerfile
 .dockerignore
 .DS_Store
-html-report
+html-report/
+testplane-report/
